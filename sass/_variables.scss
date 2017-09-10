@@ -1,0 +1,25 @@
+
+
+$theme-color: (
+        white: #FFF,
+        red: #ff343d,
+);
+
+
+@for $i from 1 through 20 {
+  .m-t-#{$i*5} {
+    margin-top: 5px * $i !important;
+  }
+  .m-l-#{$i*5} {
+    margin-left: 5px * $i !important;
+  }
+  .m-b-#{$i*5} {
+    margin-bottom: 5px * $i !important;
+  }
+  .m-r-#{$i*5} {
+    margin-right: 5px * $i !important;
+  }
+  .m-#{$i*5} {
+    margin: 5px * $i !important;
+  }
+}

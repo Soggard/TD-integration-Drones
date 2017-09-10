@@ -1,0 +1,427 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/utilities/sprites";
+@import "compass/css3/transform";
+@import "compass/css3/transition";
+@import "icons/*.png";
+@import "variables";
+
+@include all-icons-sprites(true);
+@each $key, $value in $theme-color {
+  .text-#{""+$key} {color: $value};
+}
+
+body, html {
+  height:100%;
+  font-family: "Myriad Pro", sans-serif;
+}
+
+.height-half {
+  height: 50%;
+}
+
+.height-full {
+  height: 100%;
+}
+
+h1, h2, p {
+  display: inline-block;
+}
+
+/* common */
+.left, .right {
+  height: 100%;
+  float: left;
+}
+
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+
+/* Header */
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  ul {
+    display: block;
+    li {
+      margin-left: 40px;
+      margin-right: 40px;
+      a {
+        color: black;
+        text-decoration: none;
+      }
+    }
+  }
+
+  #menu-list {
+    display: none;
+  }
+
+  #menu {
+    ul  {
+      position: absolute; /* Position absolue */
+      float: left;
+      width: 300px;
+      margin-top: 30px;
+      right: 0;
+      position: absolute;
+      li {
+        border-top : 1px solid #fff;
+        padding: 20px;
+      }
+    }
+  }
+
+  .menu-logo a {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Myriad Pro", sans-serif;
+  }
+  .menu-tel a {
+    font-size: 14px;
+    font-family: "Myriad Pro", sans-serif;
+    color: #92a1a5;
+  }
+  .menu-buy a, .menu-picto a {
+    font-size: 16px;
+  }
+}
+
+/* Block 1 */
+.block1 {
+  .left {
+    width: 60%;
+    background-color: #eff2f6;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .carousel {
+      display: flex;
+      z-index: 1;
+      .selectors {
+        margin-left: 40px;
+        a {
+          display: block;
+          color: #aaaaaa;
+          text-decoration: none;
+          font-size: 30px;
+          &:hover {
+            color: #ff343c;
+          }
+        }
+        a.selected {
+          color: #ff343c;
+        }
+      }
+      .description {
+        max-width: 400px;
+      }
+    }
+    h1 {
+      font-size: 60px;
+      font-family: "Myriad Pro", sans-serif;
+    }
+    p {
+      font-size: 14px;
+      color: #92a1a5;
+    }
+  }
+
+  .right {
+    width: 40%;
+    background: url("../img/block1bg.png") no-repeat right;
+    background-color: #ff343d;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .droneblock {
+      max-width: 100%;
+      text-align: center;
+      @include translateX(-50%);
+    }
+    .droneblock>img {
+      width: 100%;
+    }
+  }
+
+  /* Slider */
+  .slider {
+    display: none;
+  }
+  .slider.active {
+    display: block;
+  }
+}
+
+/* Block 2 */
+.block2 {
+  height: 300px;
+  .left {
+    width: 30%;
+    /*background:url("../img/block2drone.jpg") no-repeat left, url("../img/block2circle.png") no-repeat right #f8f9fb;*/
+    background-image: url("../img/block2drone.jpg"), url("../img/block2circle.png");
+    background-size: auto 80%, auto 80%;
+    background-repeat: no-repeat, no-repeat;
+    background-position: left, right;
+    background-color: #f8f9fb;
+
+    p {
+      color: #91a0a4;
+      font-size: 14px;
+    }
+
+    .columnwrap {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .right {
+    width: 70%;
+    background: url("../img/block2bg.jpg");
+    background-size: cover;
+    display: flex;
+
+  }
+
+  .blackoverlay {
+    width: 40%;
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: black;
+    opacity: 0.8;
+  }
+  .nooverlay {
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+    width:60%;
+    button {
+      @include rotate(-90deg);
+      -webkit-border-radius: 28;
+      -moz-border-radius: 28;
+      border-radius: 28px;
+      border: 0;
+      font-size: 18px;
+      background: #ffffff;
+      padding: 10px 20px 10px 20px;
+      text-decoration: none;
+    }
+
+    button:hover {
+      background: #e3fff8;
+      text-decoration: none;
+    }
+  }
+  h2 {
+    font-size: 60px;
+  }
+}
+
+/* Block 3 */
+.block3 {
+  text-align: center;
+  background-color: #FFF;
+  padding: 30px;
+
+  .row {
+    width: 80%;
+    padding: 40px 10% 0 10%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .col {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 200px;
+    p {
+      font-size: 30px;
+    }
+  }
+  h2 {
+    font-size: 48px;
+    margin-top: 30px;
+  }
+}
+
+/* Block 4 */
+.block4 {
+  background-color: #232323;
+  height: 400px;
+
+  .left {
+    width: 40%;
+    background-image: url("../img/block4bg.jpg");
+    background-size: cover;
+  }
+
+  .right {
+    width: 60%;
+    background-image: url("../img/block4drone.png");
+    background-size: auto 80%;
+    background-repeat: no-repeat;
+    background-position: right;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    h2 {
+      font-size: 72px;
+    }
+    button {
+      -webkit-border-radius: 28;
+      -moz-border-radius: 28;
+      border-radius: 28px;
+      color: #ffffff;
+      font-size: 18px;
+      padding: 10px 20px 10px 20px;
+      border: solid #d9d9d9 1px;
+      text-decoration: none;
+      background: none;
+    }
+
+    button:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+/* Block 5 */
+.block5 {
+  background-color: #ffffff;
+  background-image: url("../img/drone.png");
+  background-size: auto 80%;
+  background-repeat: no-repeat;
+  background-position: right;
+  padding-left: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 500px;
+
+  h2 {
+    font-size: 72px;
+  }
+  a {
+    font-size: 18px;
+    color: black;
+    text-decoration: none;
+  }
+}
+
+/* Block 6 */
+.block6 {
+  background-image: url("../img/block6bg.jpg");
+  background-size: cover;
+  text-align: center;
+
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+
+  h2 {
+    font-size: 72px;
+  }
+  button {
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    border: 0;
+    color: #308e76;
+    font-size: 18px;
+    background: #ffffff;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+  }
+
+  button:hover {
+    background: #e3fff8;
+    text-decoration: none;
+  }
+}
+
+footer {
+  height: 300px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  h2 {
+    font-size: 24px;
+  }
+  p {
+    color: #91a0a4;
+  }
+}
+
+
+/*
+ * RESPONSIVE DESIGN
+ * MEDIA QUERIES
+ */
+
+@media screen and (max-width: 970px) {
+
+  /* COMMON */
+  .sm-hidden {
+    display: none;
+  }
+
+  /* HEADER */
+  header {
+    #menu {
+      ul  {
+        width: 100%;
+        li {
+          color: #ff343c;
+          background-color: #eff2f6;
+          border-top : 1px solid #ff343c;
+        }
+      }
+    }
+  }
+
+  /* BLOCK 1 */
+  .block2 {
+    .left, .right {
+      height: 300px;
+      width: 100%;
+    }
+    .blackoverlay {
+      width: 100%;
+    }
+  }
+
+  .block4, .block5 {
+    padding-left: 0;
+    .right h2, h2 {
+        width: 100%;
+        font-size: 50px;
+    }
+  }
+  .block4 .right {
+    width: 100%;
+  }
+
+}
